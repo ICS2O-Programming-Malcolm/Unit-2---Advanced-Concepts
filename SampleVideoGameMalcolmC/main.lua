@@ -1,13 +1,15 @@
 -----------------------------------------------------------------------------------------
 --
 -- main.lua
--- Created by: Your Name
--- Date: Month Day, Year
+-- Title: SampleVideoGame
+-- Created by: Malcolm Cantin
+-- Course: ICS2O
+-- Date: April 21, 2020
 -- Description: This calls the splash screen of the app to load itself.
 -----------------------------------------------------------------------------------------
 
 -- Hiding Status Bar
--- HIDE THE STATUS BAR
+display.setStatusBar(display.HiddenStatusBar)
 
 -----------------------------------------------------------------------------------------
 

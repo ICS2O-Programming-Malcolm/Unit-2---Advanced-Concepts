@@ -1,8 +1,8 @@
 -----------------------------------------------------------------------------------------
 --
 -- main_menu.lua
--- Created by: Your Name
--- Date: Month Day, Year
+-- Created by: Malcolm Cantin
+-- Date: April 21, 2020
 -- Description: This is the main menu, displaying the credits, instructions & play buttons.
 -----------------------------------------------------------------------------------------
 
@@ -35,6 +35,14 @@ local scene = composer.newScene( sceneName )
 local bkg_image
 local playButton
 local creditsButton
+local instructionsButton
+
+-----------------------------------------------------------------------------------------
+-- SOUNDS
+-----------------------------------------------------------------------------------------
+
+local mainMenuMusic = audio.loadSound("Sounds/mainMenuMusic.wav")
+local mainMenuMusicChannel
 
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
@@ -49,10 +57,15 @@ end
 
 -- Creating Transition to Level1 Screen
 local function Level1ScreenTransition( )
-    composer.gotoScene( "level1_screen", {effect = "zoomInOutFade", time = 1000})
+    composer.gotoScene( "instructions_screen", {effect = "zoomInOutFade", time = 1000})
 end    
 
--- INSERT LOCAL FUNCTION DEFINITION THAT GOES TO INSTRUCTIONS SCREEN 
+-----------------------------------------------------------------------------------------
+
+-- Creating Transition to Instructions Screen
+local function InstructionsTransition( )
+    composer.gotoScene( "instructions_screen", {effect = "zoomInOutFade", time = 1000})
+end   
 
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
@@ -93,6 +106,9 @@ function scene:create( event )
             x = display.contentWidth/2,
             y = display.contentHeight*7/8,
 
+            width = 200,
+            height = 100,
+
             -- Insert the images here
             defaultFile = "Images/Start Button Unpressed.png",
             overFile = "Images/Start Button Pressed.png",
@@ -110,6 +126,9 @@ function scene:create( event )
             x = display.contentWidth*7/8,
             y = display.contentHeight*7/8,
 
+            width = 200,
+            height = 100,
+
             -- Insert the images here
             defaultFile = "Images/Credits Button Unpressed.png",
             overFile = "Images/Credits Button Pressed.png",
@@ -118,24 +137,41 @@ function scene:create( event )
             onRelease = CreditsTransition
         } ) 
     
-    -- ADD INSTRUCTIONS BUTTON WIDGET
+    -----------------------------------------------------------------------------------------
+
+    -- Creating Instructions Button
+    instructionsButton = widget.newButton( 
+        {
+            -- Set its position on the screen relative to the screen size
+            x = display.contentWidth*1/8,
+            y = display.contentHeight*7/8,
+
+            width = 200,
+            height = 100,
+
+            -- Insert the images here
+            defaultFile = "Images/Instructions Button Unpressed.png",
+            overFile = "Images/Instructions Button Pressed.png",
+
+            -- When the button is released, call the Instructions transition function
+            onRelease = InstructionsTransition
+        } ) 
 
     -----------------------------------------------------------------------------------------
 
     -- Associating button widgets with this scene
     sceneGroup:insert( playButton )
     sceneGroup:insert( creditsButton )
-    
-    -- INSERT INSTRUCTIONS BUTTON INTO SCENE GROUP
+    sceneGroup:insert( instructionsButton )
 
 end -- function scene:create( event )   
-
-
 
 -----------------------------------------------------------------------------------------
 
 -- The function called when the scene is issued to appear on screen
 function scene:show( event )
+
+    mainMenuMusicChannel = audio.play(mainMenuMusic, {loops, = -1})
 
     -- Creating a group that associates objects with the scene
     local sceneGroup = self.view
@@ -155,7 +191,8 @@ function scene:show( event )
     -- Insert code here to make the scene come alive.
     -- Example: start timers, begin animation, play audio, etc.
     elseif ( phase == "did" ) then       
-        
+
+
 
     end
 
@@ -184,6 +221,9 @@ function scene:hide( event )
 
     elseif ( phase == "did" ) then
         -- Called immediately after scene goes off screen.
+
+        audio.stop(mainMenuMusic)
+        
     end
 
 end -- function scene:hide( event )
