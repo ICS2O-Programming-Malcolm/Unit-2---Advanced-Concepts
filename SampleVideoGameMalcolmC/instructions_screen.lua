@@ -3,7 +3,7 @@
 -- instructions_screen.lua
 -- Created by: Malcolm Cantin
 -- Special thanks to Wal Wal for helping in the design of this framework.
--- Date: April 21, 2020
+-- Date: April 24, 2020
 -- Description: This is the instructions page, displaying a back button to the main menu.
 -----------------------------------------------------------------------------------------
 
