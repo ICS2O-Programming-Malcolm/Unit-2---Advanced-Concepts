@@ -1,5 +1,5 @@
 -----------------------------------------------------------------------------------------
--- you_lose.lua
+-- you_win.lua
 -- Created by: Gil Robern
 -- Modified by: Malcolm Cantin
 -- Date: April 24, 2020
@@ -18,7 +18,7 @@ local widget = require( "widget" )
 -----------------------------------------------------------------------------------------
 
 -- Naming Scene
-sceneName = "you_lose"
+sceneName = "you_win"
 
 -----------------------------------------------------------------------------------------
 
@@ -48,7 +48,7 @@ function scene:create( event )
     local sceneGroup = self.view
 
     -- Display background
-    bkg = display.newImage("Images/You Lose.png")
+    bkg = display.newImage("Images/You Win.png")
     bkg.x = display.contentCenterX
     bkg.y = display.contentCenterY
     bkg.width = display.contentWidth
@@ -143,4 +143,3 @@ scene:addEventListener( "destroy", scene )
 -----------------------------------------------------------------------------------------
 
 return scene
-

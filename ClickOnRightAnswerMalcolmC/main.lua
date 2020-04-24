@@ -1,8 +1,8 @@
 -----------------------------------------------------------------------------------------
 -- main.lua
 -- Created by: Gil Robern
--- Modified by: Your Name
--- Date: Month Day, Year
+-- Modified by: Malcolm Cantin
+-- Date: April 24, 2020
 -- Description: This calls the splash screen of the app to load itself.
 -----------------------------------------------------------------------------------------
 

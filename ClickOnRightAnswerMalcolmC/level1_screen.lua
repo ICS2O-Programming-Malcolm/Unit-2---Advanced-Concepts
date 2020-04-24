@@ -1,9 +1,8 @@
 -----------------------------------------------------------------------------------------
---
 -- level1_screen.lua
 -- Created by: Gil Robern
--- Modified by: Your Name
--- Date: Month Day, Year
+-- Modified by: Malcolm Cantin
+-- Date: April 24, 2020
 -- Description: This is the level 1 screen of the game.
 -----------------------------------------------------------------------------------------
 
@@ -182,7 +181,7 @@ local function RestartScene()
     if (lives == 0) then
         LoseScreenTransition()
 
-    elseif (numberCorrect == 1) then
+    elseif (numberCorrect == 3) then
         WinScreenTransition()
 
     else
@@ -190,6 +189,7 @@ local function RestartScene()
         DisplayAddEquation()
         DetermineAnswers()
         DisplayAnswers()
+
     end
 end
 
@@ -363,7 +363,7 @@ function scene:create( event )
     sceneGroup:insert( answerTextObject )
     sceneGroup:insert( wrongAnswer1TextObject )
     sceneGroup:insert( wrongAnswer2TextObject )
-    sceneGroup:insert( wrongAnswer2TextObject )
+    sceneGroup:insert( wrongAnswer3TextObject )
     sceneGroup:insert( congratulationText )
     sceneGroup:insert( correct )
     sceneGroup:insert( level1Text )
