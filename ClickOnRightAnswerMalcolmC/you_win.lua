@@ -36,7 +36,7 @@ local bkg
 -- SOUNDS
 -----------------------------------------------------------------------------------------
 
-local youWinSound = audio.loadSound("Sounds/youWinSound.wav")
+local youWinSound = audio.loadSound("Sounds/youWinSound.mp3")
 local youWinSoundChannel
 
 -----------------------------------------------------------------------------------------

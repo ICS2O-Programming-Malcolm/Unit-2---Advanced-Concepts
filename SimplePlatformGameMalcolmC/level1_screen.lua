@@ -62,9 +62,9 @@ local uArrow
 local lArrow
 
 local motionx = 0
-local SPEED = 5
+local SPEED = 8
 local LINEAR_VELOCITY = -100
-local GRAVITY = 7
+local GRAVITY = 10
 
 local leftW 
 local rightW
@@ -123,7 +123,7 @@ end
 local function RemoveArrowEventListeners()
     rArrow:removeEventListener("touch", right)
     uArrow:removeEventListener("touch", up)
-    lArrow:revomeEventListener("touch", left)
+    lArrow:removeEventListener("touch", left)
 end
 
 local function AddRuntimeListeners()
