@@ -3,6 +3,8 @@
 -- credits_screen.lua
 -- Created by: Daniel Lopez-Carreon
 -- Date: Nov. 24th, 2014
+-- Edited by: Malcolm Cantin
+-- Edited on: April 29, 2020
 -- Description: This is the you win screen
 -----------------------------------------------------------------------------------------
 
@@ -25,6 +27,12 @@ sceneName = "you_win"
 
 -- Creating Scene Object
 local scene = composer.newScene( sceneName ) -- This function doesn't accept a string, only a variable containing a string
+
+-----------------------------------------------------------------------------------------
+-- SOUNDS
+-----------------------------------------------------------------------------------------
+local winSound = audio.loadSound("Sounds/yabbadabbalaugh.wav")
+local winSoundChannel
 
 -----------------------------------------------------------------------------------------
 -- DISPLAY OBJECTS
@@ -74,6 +82,9 @@ function scene:show( event )
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
+
+        winSoundChannel = audio.play(winSound)
+
     end
 
 end -- function scene:show( event )
