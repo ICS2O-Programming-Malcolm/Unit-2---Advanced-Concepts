@@ -79,13 +79,13 @@ local userAnswerBoxPlaceholder
 -----------------------------------------------------------------------------------------
 -- SOUNDS
 -----------------------------------------------------------------------------------------
-local correctSound = audio.loadSound("Sounds/Correct.wav")
+local correctSound = audio.loadSound("Sounds/Correct.wav", {channel = 2})
 local correctSoundChannel
 
-local booSound = audio.loadSound("Sounds/boo.mp3")
+local booSound = audio.loadSound("Sounds/boo.mp3", {channel = 3})
 local booSoundChannel
 
-local bgMusic = audio.loadSound("Sounds/mainMenuMusic.wav")
+local bgMusic = audio.loadSound("Sounds/mainMenuMusic.wav", {channel = 1}, {loops = -1})
 local bgMusicChannel 
 
 -----------------------------------------------------------------------------------------
@@ -286,12 +286,14 @@ end
 
 -- Function to Check User Input
 local function CheckUserAnswerInput()
+    -- if the user gets the correct answer
     if (correctAnswer == userAnswer) then
         if (numCorrect == 3) then
             YouWinTransitionLevel1()
         else
             timer.performWithDelay(800, RestartLevel1)
         end
+    -- otherwise the answer is wrong
     else
         if (numWrong == 2) then
             YouLoseTransitionLevel1()
@@ -603,10 +605,14 @@ function scene:show( event )
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
+
+        numCorrect = 0
+        numWrong = 0
+
         RestartLevel1()
         AddAnswerBoxEventListeners() 
 
-        bgMusicChannel = audio.play(bgMusic, {loops = -1})
+        bgMusicChannel = audio.play(bgMusic)
 
     end
 
