@@ -85,7 +85,7 @@ local correctSoundChannel
 local booSound = audio.loadSound("Sounds/boo.mp3", {channel = 3})
 local booSoundChannel
 
-local bgMusic = audio.loadSound("Sounds/mainMenuMusic.wav", {channel = 1}, {loops = -1})
+local bgMusic = audio.loadSound("Sounds/mainMenuMusic.wav", {channel = 1})
 local bgMusicChannel 
 
 -----------------------------------------------------------------------------------------
@@ -612,7 +612,7 @@ function scene:show( event )
         RestartLevel1()
         AddAnswerBoxEventListeners() 
 
-        bgMusicChannel = audio.play(bgMusic)
+        bgMusicChannel = audio.play(bgMusic, {loops = -1})
 
     end
 
