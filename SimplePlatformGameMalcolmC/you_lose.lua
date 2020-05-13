@@ -41,7 +41,7 @@ local bkg
 -----------------------------------------------------------------------------------------
 
 -- add lose sound effect
-local loseSound = audio.loadSound("Sounds/YouLose.mp3")
+local loseSound = audio.loadSound("Sounds/lose.mp3")
 local loseSoundChannel
 
 -----------------------------------------------------------------------------------------
@@ -96,8 +96,10 @@ function scene:show( event )
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
 
-        -- play lose sound effect
-        loseSoundChannel = audio.play(loseSound)
+        if (soundOn == true) then
+            -- play lose sound effect
+            loseSoundChannel = audio.play(loseSound)
+        end
 
     end
 

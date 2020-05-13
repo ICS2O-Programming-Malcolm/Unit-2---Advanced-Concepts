@@ -41,7 +41,7 @@ local bkg
 -----------------------------------------------------------------------------------------
 
 -- add lose sound effect
-local winSound = audio.loadSound("Sounds/Cheer.m4a")
+local winSound = audio.loadSound("Sounds/win.mp3")
 local winSoundChannel
 
 -----------------------------------------------------------------------------------------
@@ -96,8 +96,10 @@ function scene:show( event )
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
 
-        -- play lose sound effect
-        winSoundChannel = audio.play(winSound)
+        if (soundOn == true) then
+            -- play win sound effect
+            winSoundChannel = audio.play(winSound)
+        end
 
     end
 
